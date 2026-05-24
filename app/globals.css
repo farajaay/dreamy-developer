@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette */
+  --color-ink: #0F172A;
+  --color-deep: #1E293B;
+  --color-slate-soft: #334155;
+  --color-ivory: #F7F1ED;
+  --color-blush: #E9D5D1;
+  --color-rose: #D18C8C;
+  --color-mauve: #8B5E5E;
+
+  /* Semantic tokens */
+  --color-background: var(--color-ivory);
+  --color-foreground: var(--color-ink);
+  --color-muted: var(--color-slate-soft);
+  --color-accent: var(--color-rose);
+  --color-accent-soft: var(--color-blush);
+  --color-accent-deep: var(--color-mauve);
+  --color-rule: rgba(15, 23, 42, 0.12);
+
+  /* Typography */
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+
+  /* Editorial type scale */
+  --text-display: clamp(3rem, 7vw, 6rem);
+  --text-headline: clamp(2rem, 4.5vw, 3.5rem);
+  --text-title: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+html {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: var(--color-rose);
+  color: var(--color-ivory);
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-feature-settings: "ss01", "ss02";
+}
+
+.display-xl {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-size: var(--text-display);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  font-weight: 400;
+}
+
+.display-lg {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-size: var(--text-headline);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+
+.display-md {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-size: var(--text-title);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  font-weight: 500;
+}
+
+.eyebrow {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-mauve);
+}
+
+.rule {
+  height: 1px;
+  background: var(--color-rule);
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
