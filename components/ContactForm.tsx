@@ -72,18 +72,23 @@ export function ContactForm() {
 
   if (status.kind === "success") {
     return (
-      <div className="border border-[color:var(--color-rule)] rounded-2xl p-10 md:p-14 bg-[color:var(--color-ivory)]">
-        <p className="eyebrow text-[color:var(--color-rose)]">Message sent</p>
-        <p className="font-display text-3xl md:text-4xl mt-6 text-[color:var(--color-ink)]">
-          Thank you. <em className="italic text-[color:var(--color-rose)]">I'll write back within 48 hours.</em>
+      <div className="border border-[color:var(--color-rule)] rounded-2xl p-10 md:p-14 bg-[color:var(--color-bg-elevated)]">
+        <p className="eyebrow" style={{ color: "var(--color-accent)" }}>
+          Message sent
         </p>
-        <p className="mt-6 text-[color:var(--color-slate-soft)] leading-relaxed">
+        <p className="font-display text-3xl md:text-4xl mt-6 text-[color:var(--color-fg)]">
+          Thank you.{" "}
+          <em className="italic text-[color:var(--color-accent)]">
+            I'll write back within 48 hours.
+          </em>
+        </p>
+        <p className="mt-6 text-[color:var(--color-fg-muted)] leading-relaxed">
           If something is urgent, an email direct to me usually moves faster than a form.
         </p>
         <button
           type="button"
           onClick={() => setStatus({ kind: "idle" })}
-          className="mt-10 text-sm text-[color:var(--color-mauve)] hover:text-[color:var(--color-ink)]"
+          className="mt-10 text-sm text-[color:var(--color-accent)] hover:text-[color:var(--color-fg)]"
         >
           ← Send another
         </button>
@@ -92,7 +97,7 @@ export function ContactForm() {
   }
 
   const fieldBase =
-    "w-full bg-transparent border-b border-[color:var(--color-rule)] py-3 px-0 text-[color:var(--color-ink)] focus:outline-none focus:border-[color:var(--color-rose)] transition-colors placeholder:text-[color:var(--color-slate-soft)]/50";
+    "w-full bg-transparent border-b border-[color:var(--color-rule)] py-3 px-0 text-[color:var(--color-fg)] focus:outline-none focus:border-[color:var(--color-accent)] transition-colors placeholder:text-[color:var(--color-fg-dim)]";
 
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-10">
@@ -174,17 +179,19 @@ export function ContactForm() {
       />
 
       {status.kind === "error" && (
-        <p className="text-sm text-[color:var(--color-rose)]">{status.message}</p>
+        <p className="text-sm text-[color:var(--color-accent)]">
+          {status.message}
+        </p>
       )}
 
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pt-2">
-        <p className="text-sm text-[color:var(--color-slate-soft)]">
+        <p className="text-sm text-[color:var(--color-fg-muted)]">
           {contact.reassurance}
         </p>
         <button
           type="submit"
           disabled={status.kind === "submitting"}
-          className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[color:var(--color-ink)] text-[color:var(--color-ivory)] text-sm tracking-wide hover:bg-[color:var(--color-deep)] transition-colors disabled:opacity-60 disabled:cursor-not-allowed self-start md:self-auto"
+          className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[color:var(--color-fg)] text-[color:var(--color-bg)] text-sm tracking-wide hover:bg-[color:var(--color-accent-soft)] transition-colors disabled:opacity-60 disabled:cursor-not-allowed self-start md:self-auto"
         >
           {status.kind === "submitting" ? "Sending…" : "Send message"}
           <span aria-hidden>→</span>
@@ -208,7 +215,7 @@ function Field({
       <span className="eyebrow block mb-3">{label}</span>
       {input}
       {error && (
-        <span className="block mt-2 text-xs text-[color:var(--color-rose)]">
+        <span className="block mt-2 text-xs text-[color:var(--color-accent)]">
           {error}
         </span>
       )}

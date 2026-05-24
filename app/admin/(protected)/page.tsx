@@ -35,9 +35,7 @@ export default async function AdminDashboard() {
   return (
     <>
       <p className="eyebrow">Admin · dashboard</p>
-      <h1 className="display-lg mt-6 text-[color:var(--color-ink)]">
-        Quiet morning at the desk.
-      </h1>
+      <h1 className="display-lg mt-6">Quiet morning at the desk.</h1>
 
       {!isDbConfigured() && (
         <ConfigBanner
@@ -61,13 +59,13 @@ export default async function AdminDashboard() {
       <div className="mt-14 flex flex-wrap gap-4">
         <Link
           href="/admin/pricing"
-          className="px-5 py-3 rounded-full bg-[color:var(--color-ink)] text-[color:var(--color-ivory)] text-sm"
+          className="px-5 py-3 rounded-full bg-[color:var(--color-fg)] text-[color:var(--color-bg)] text-sm hover:bg-[color:var(--color-accent-soft)] transition-colors"
         >
           Manage pricing
         </Link>
         <Link
           href="/admin/transactions"
-          className="px-5 py-3 rounded-full border border-[color:var(--color-rule)] text-sm text-[color:var(--color-ink)] hover:border-[color:var(--color-rose)]"
+          className="px-5 py-3 rounded-full border border-[color:var(--color-rule)] text-sm text-[color:var(--color-fg)] hover:border-[color:var(--color-accent)] transition-colors"
         >
           View transactions
         </Link>
@@ -78,9 +76,9 @@ export default async function AdminDashboard() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <li className="bg-[color:var(--color-ivory)] p-8">
+    <li className="bg-[color:var(--color-bg-elevated)] p-8">
       <p className="eyebrow">{label}</p>
-      <p className="font-display text-4xl mt-3 text-[color:var(--color-ink)]">
+      <p className="font-display text-4xl mt-3 text-[color:var(--color-fg)]">
         {value}
       </p>
     </li>
@@ -89,9 +87,9 @@ function Stat({ label, value }: { label: string; value: string }) {
 
 function ConfigBanner({ title, body }: { title: string; body: string }) {
   return (
-    <div className="mt-10 border border-[color:var(--color-rose)]/40 bg-[color:var(--color-blush)]/20 rounded-2xl p-6 md:p-8">
-      <p className="font-display text-xl text-[color:var(--color-ink)]">{title}</p>
-      <p className="mt-2 text-sm text-[color:var(--color-slate-soft)]">{body}</p>
+    <div className="mt-10 border border-[color:var(--color-accent)]/40 bg-[color:var(--color-accent)]/5 rounded-2xl p-6 md:p-8">
+      <p className="font-display text-xl text-[color:var(--color-fg)]">{title}</p>
+      <p className="mt-2 text-sm text-[color:var(--color-fg-muted)]">{body}</p>
     </div>
   );
 }

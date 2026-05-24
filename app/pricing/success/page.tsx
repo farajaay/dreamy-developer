@@ -9,21 +9,22 @@ export const metadata: Metadata = {
 
 export default function SuccessPage() {
   return (
-    <section className="min-h-[70vh] flex items-center">
-      <div className="mx-auto max-w-3xl px-6 md:px-10 py-20 md:py-28">
+    <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+      <div className="absolute inset-0 bg-topo pointer-events-none" aria-hidden />
+      <div className="relative mx-auto max-w-3xl px-6 md:px-10 py-20 md:py-28">
         <Reveal>
           <p className="eyebrow">Payment received</p>
         </Reveal>
         <Reveal delay={0.1}>
-          <h1 className="display-xl mt-8 text-[color:var(--color-ink)]">
+          <h1 className="display-xl mt-8">
             Thank you.{" "}
-            <em className="italic text-[color:var(--color-rose)]">
+            <em className="italic text-[color:var(--color-accent)]">
               I'll be in touch within a working day.
             </em>
           </h1>
         </Reveal>
         <Reveal delay={0.2}>
-          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[color:var(--color-slate-soft)]">
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[color:var(--color-fg-muted)]">
             A receipt is already on its way to your inbox. You'll hear from me
             with a short discovery questionnaire and a proposed start date.
           </p>
@@ -31,7 +32,7 @@ export default function SuccessPage() {
         <Reveal delay={0.3}>
           <Link
             href="/"
-            className="mt-12 inline-flex items-center gap-2 text-sm text-[color:var(--color-mauve)] hover:text-[color:var(--color-ink)]"
+            className="mt-12 inline-flex items-center gap-2 text-sm text-[color:var(--color-accent)] hover:text-[color:var(--color-fg)]"
           >
             ← Back to the homepage
           </Link>

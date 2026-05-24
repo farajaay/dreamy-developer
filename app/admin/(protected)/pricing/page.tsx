@@ -28,7 +28,7 @@ export default async function AdminPricingPage() {
       <div className="flex items-end justify-between gap-6 flex-wrap">
         <div>
           <p className="eyebrow">Admin · pricing</p>
-          <h1 className="display-lg mt-6 text-[color:var(--color-ink)]">
+          <h1 className="display-lg mt-6 text-[color:var(--color-fg)]">
             Tiers.
           </h1>
         </div>
@@ -36,7 +36,7 @@ export default async function AdminPricingPage() {
           <form action={seedTiers}>
             <button
               type="submit"
-              className="px-5 py-3 rounded-full bg-[color:var(--color-ink)] text-[color:var(--color-ivory)] text-sm"
+              className="px-5 py-3 rounded-full bg-[color:var(--color-fg)] text-[color:var(--color-bg)] text-sm"
             >
               Seed default tiers
             </button>
@@ -45,11 +45,11 @@ export default async function AdminPricingPage() {
       </div>
 
       {error && (
-        <div className="mt-8 border border-[color:var(--color-rose)]/40 bg-[color:var(--color-blush)]/20 rounded-2xl p-6">
-          <p className="font-display text-lg text-[color:var(--color-ink)]">
+        <div className="mt-8 border border-[color:var(--color-accent)]/40 bg-[color:var(--color-accent)]/5 rounded-2xl p-6">
+          <p className="font-display text-lg text-[color:var(--color-fg)]">
             Database error
           </p>
-          <p className="mt-2 text-sm text-[color:var(--color-slate-soft)]">
+          <p className="mt-2 text-sm text-[color:var(--color-fg-muted)]">
             {error}
           </p>
         </div>
@@ -65,10 +65,10 @@ export default async function AdminPricingPage() {
             <details>
               <summary className="cursor-pointer flex items-baseline justify-between gap-4">
                 <span>
-                  <span className="font-display text-2xl text-[color:var(--color-ink)]">
+                  <span className="font-display text-2xl text-[color:var(--color-fg)]">
                     {t.name}
                   </span>
-                  <span className="ml-3 text-sm text-[color:var(--color-slate-soft)]">
+                  <span className="ml-3 text-sm text-[color:var(--color-fg-muted)]">
                     SAR {(t.priceSarHalalas / 100).toLocaleString()}{" "}
                     {t.cadence === "monthly" ? "/ month" : ""}
                   </span>
@@ -93,7 +93,7 @@ export default async function AdminPricingPage() {
                 <div className="mt-2 flex gap-3 flex-wrap">
                   <button
                     type="submit"
-                    className="px-5 py-2.5 rounded-full bg-[color:var(--color-ink)] text-[color:var(--color-ivory)] text-sm"
+                    className="px-5 py-2.5 rounded-full bg-[color:var(--color-fg)] text-[color:var(--color-bg)] text-sm"
                   >
                     Save changes
                   </button>
@@ -103,7 +103,7 @@ export default async function AdminPricingPage() {
                 <input type="hidden" name="id" value={t.id} />
                 <button
                   type="submit"
-                  className="text-xs text-[color:var(--color-mauve)] hover:text-[color:var(--color-rose)]"
+                  className="text-xs text-[color:var(--color-accent)] hover:text-[color:var(--color-fg)]"
                 >
                   Delete this tier
                 </button>
@@ -115,7 +115,7 @@ export default async function AdminPricingPage() {
 
       {/* Create new */}
       <details className="mt-12 border border-dashed border-[color:var(--color-rule)] rounded-2xl p-6 md:p-8">
-        <summary className="cursor-pointer font-display text-xl text-[color:var(--color-ink)]">
+        <summary className="cursor-pointer font-display text-xl text-[color:var(--color-fg)]">
           + Add a new tier
         </summary>
         <form action={createTier} className="mt-6 grid gap-4">
@@ -134,7 +134,7 @@ export default async function AdminPricingPage() {
           <div className="mt-2">
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-full bg-[color:var(--color-ink)] text-[color:var(--color-ivory)] text-sm"
+              className="px-5 py-2.5 rounded-full bg-[color:var(--color-fg)] text-[color:var(--color-bg)] text-sm"
             >
               Create tier
             </button>
@@ -146,7 +146,7 @@ export default async function AdminPricingPage() {
 }
 
 const fieldClass =
-  "w-full bg-transparent border-b border-[color:var(--color-rule)] py-2.5 px-0 text-[color:var(--color-ink)] focus:outline-none focus:border-[color:var(--color-rose)] transition-colors";
+  "w-full bg-transparent border-b border-[color:var(--color-rule)] py-2.5 px-0 text-[color:var(--color-fg)] focus:outline-none focus:border-[color:var(--color-accent)] transition-colors";
 
 function TierFields(props: {
   name?: string;

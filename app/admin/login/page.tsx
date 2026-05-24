@@ -97,9 +97,7 @@ export default async function LoginPage({
     <section className="min-h-[70vh] flex items-center">
       <div className="mx-auto w-full max-w-md px-6 py-20">
         <p className="eyebrow">Admin</p>
-        <h1 className="display-lg mt-6 text-[color:var(--color-ink)]">
-          Sign in.
-        </h1>
+        <h1 className="display-lg mt-6">Sign in.</h1>
         <form action={login} className="mt-10 space-y-8">
           <label className="block">
             <span className="eyebrow block mb-3">Password</span>
@@ -109,15 +107,15 @@ export default async function LoginPage({
               required
               autoFocus
               autoComplete="current-password"
-              className="w-full bg-transparent border-b border-[color:var(--color-rule)] py-3 px-0 text-[color:var(--color-ink)] focus:outline-none focus:border-[color:var(--color-rose)] transition-colors"
+              className="w-full bg-transparent border-b border-[color:var(--color-rule)] py-3 px-0 text-[color:var(--color-fg)] focus:outline-none focus:border-[color:var(--color-accent)] transition-colors"
             />
           </label>
           {message && (
-            <p className="text-sm text-[color:var(--color-rose)]">{message}</p>
+            <p className="text-sm text-[color:var(--color-accent)]">{message}</p>
           )}
           <button
             type="submit"
-            className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[color:var(--color-ink)] text-[color:var(--color-ivory)] text-sm tracking-wide hover:bg-[color:var(--color-deep)] transition-colors"
+            className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[color:var(--color-fg)] text-[color:var(--color-bg)] text-sm tracking-wide hover:bg-[color:var(--color-accent-soft)] transition-colors"
           >
             Continue
             <span aria-hidden>→</span>

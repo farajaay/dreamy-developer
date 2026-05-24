@@ -29,10 +29,10 @@ function formatDate(d: Date): string {
 }
 
 const statusColors: Record<string, string> = {
-  paid: "text-emerald-700 bg-emerald-50 border-emerald-200",
-  pending: "text-amber-700 bg-amber-50 border-amber-200",
-  failed: "text-rose-700 bg-rose-50 border-rose-200",
-  refunded: "text-slate-600 bg-slate-50 border-slate-200",
+  paid: "text-emerald-300 bg-emerald-950/40 border-emerald-700/40",
+  pending: "text-amber-300 bg-amber-950/40 border-amber-700/40",
+  failed: "text-rose-300 bg-rose-950/40 border-rose-700/40",
+  refunded: "text-slate-400 bg-slate-800/40 border-slate-600/40",
 };
 
 export default async function AdminTransactionsPage() {
@@ -43,23 +43,19 @@ export default async function AdminTransactionsPage() {
   return (
     <>
       <p className="eyebrow">Admin · transactions</p>
-      <h1 className="display-lg mt-6 text-[color:var(--color-ink)]">
-        Every payment, every time.
-      </h1>
+      <h1 className="display-lg mt-6">Every payment, every time.</h1>
 
       {error && (
-        <div className="mt-8 border border-[color:var(--color-rose)]/40 bg-[color:var(--color-blush)]/20 rounded-2xl p-6">
-          <p className="font-display text-lg text-[color:var(--color-ink)]">
+        <div className="mt-8 border border-[color:var(--color-accent)]/40 bg-[color:var(--color-accent)]/5 rounded-2xl p-6">
+          <p className="font-display text-lg text-[color:var(--color-fg)]">
             Database error
           </p>
-          <p className="mt-2 text-sm text-[color:var(--color-slate-soft)]">
-            {error}
-          </p>
+          <p className="mt-2 text-sm text-[color:var(--color-fg-muted)]">{error}</p>
         </div>
       )}
 
       {!error && list.length === 0 && (
-        <p className="mt-12 text-[color:var(--color-slate-soft)] italic font-display text-lg">
+        <p className="mt-12 text-[color:var(--color-fg-muted)] italic font-display text-lg">
           No transactions yet.
         </p>
       )}
@@ -83,36 +79,37 @@ export default async function AdminTransactionsPage() {
                   key={t.id}
                   className="border-b border-[color:var(--color-rule)]/50 align-top"
                 >
-                  <td className="py-4 pr-4 text-[color:var(--color-slate-soft)]">
+                  <td className="py-4 pr-4 text-[color:var(--color-fg-muted)]">
                     {formatDate(t.createdAt)}
                   </td>
                   <td className="py-4 pr-4">
-                    <p className="text-[color:var(--color-ink)]">
+                    <p className="text-[color:var(--color-fg)]">
                       {t.customerName ?? "—"}
                     </p>
-                    <p className="text-xs text-[color:var(--color-slate-soft)]">
+                    <p className="text-xs text-[color:var(--color-fg-muted)]">
                       {t.customerEmail}
                     </p>
                   </td>
-                  <td className="py-4 pr-4 text-[color:var(--color-ink)]">
+                  <td className="py-4 pr-4 text-[color:var(--color-fg)]">
                     {t.tierName}
-                    <span className="block text-xs text-[color:var(--color-slate-soft)]">
+                    <span className="block text-xs text-[color:var(--color-fg-muted)]">
                       {t.tierSlug}
                     </span>
                   </td>
-                  <td className="py-4 pr-4 font-display text-base text-[color:var(--color-ink)]">
+                  <td className="py-4 pr-4 font-display text-base text-[color:var(--color-fg)]">
                     {formatAmount(t.amountTotal, t.currency)}
                   </td>
                   <td className="py-4 pr-4">
                     <span
                       className={`inline-block px-2.5 py-1 rounded-full border text-xs ${
-                        statusColors[t.status] ?? "text-slate-600 bg-slate-50 border-slate-200"
+                        statusColors[t.status] ??
+                        "text-slate-400 bg-slate-800/40 border-slate-600/40"
                       }`}
                     >
                       {t.status}
                     </span>
                   </td>
-                  <td className="py-4 pr-4 text-xs text-[color:var(--color-slate-soft)]">
+                  <td className="py-4 pr-4 text-xs text-[color:var(--color-fg-muted)]">
                     {t.stripeSessionId.slice(0, 16)}…
                   </td>
                 </tr>

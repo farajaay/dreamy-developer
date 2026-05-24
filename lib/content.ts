@@ -22,6 +22,7 @@ export const nav = [
   { href: "/pricing", label: "Pricing" },
   { href: "/portfolio", label: "Work" },
   { href: "/about", label: "About" },
+  { href: "/now", label: "Now" },
 ];
 
 /**
@@ -281,6 +282,49 @@ export const about = {
     {
       title: "Direct communication",
       body: "I will tell you what I think, what I think it costs, and what I will not do — in writing, in plain language, before any money changes hands. If I do not believe in a feature, I will say so. If your scope is creeping, I will mark the day it started. I treat written words as load-bearing structures, because they are.",
+    },
+  ],
+};
+
+export const now = {
+  eyebrow: "/ now",
+  heading: "What I'm working on",
+  headingItalic: "this season.",
+  intro:
+    "An honest, occasionally-updated snapshot. Inspired by Derek Sivers, kept short on purpose.",
+  updatedAt: "May 2026",
+  sections: [
+    {
+      title: "Building",
+      items: [
+        "This site, in slow public — a small editorial portfolio with a real admin and Stripe-backed checkout, written one careful commit at a time.",
+        "An internal automation tool for a Jubail-based client that turns a weekly four-hour ritual into a one-click report.",
+        "A long-running side project: a Markdown notebook that talks back. Not ready to be seen yet.",
+      ],
+    },
+    {
+      title: "Reading",
+      items: [
+        "Mahmoud Darwish — Memory for Forgetfulness. Slowly, two pages at a time, in Arabic.",
+        "Don Norman — Living with Complexity. A reminder that software is always living with someone.",
+        "A worn copy of Rilke's Letters to a Young Poet that travels with me.",
+      ],
+    },
+    {
+      title: "Listening to",
+      items: [
+        "Marcel Khalifé, Jadal al-Atfaal. Studying.",
+        "Nils Frahm, All Melody. Coding.",
+        "The morning adhan, before the rest of the house wakes up.",
+      ],
+    },
+    {
+      title: "Thinking about",
+      items: [
+        "How to make handover documents that survive the people who wrote them.",
+        "Why the best engineers I've worked with all read fiction.",
+        "Whether to translate this site into Arabic before the end of the year.",
+      ],
     },
   ],
 };
