@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { about } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
 
@@ -91,9 +92,18 @@ export default function AboutPage() {
 
       {/* Personal */}
       <section>
-        <div className="mx-auto max-w-6xl px-6 md:px-10 py-24 md:py-32 grid gap-12 md:grid-cols-12">
+        <div className="mx-auto max-w-6xl px-6 md:px-10 py-24 md:py-32 grid gap-12 md:grid-cols-12 items-center">
           <Reveal className="md:col-span-4">
             <p className="eyebrow">Off the clock</p>
+            <figure className="mt-8 relative aspect-[4/5] overflow-hidden rounded-2xl border border-[color:var(--color-rule)]">
+              <Image
+                src="/photos/notebook.jpg"
+                alt="Fountain pen mid-sentence on lined paper"
+                fill
+                sizes="(min-width: 768px) 350px, 100vw"
+                className="object-cover"
+              />
+            </figure>
           </Reveal>
           <Reveal delay={0.1} className="md:col-span-8">
             <p className="font-display text-3xl md:text-4xl leading-snug text-[color:var(--color-ink)]">

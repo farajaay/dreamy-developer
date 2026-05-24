@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { home } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
 
@@ -40,6 +41,33 @@ export default function HomePage() {
         </div>
 
         <div className="absolute inset-x-0 bottom-0 h-px bg-[color:var(--color-rule)]" />
+      </section>
+
+      {/* Editorial image band */}
+      <section className="relative bg-[color:var(--color-ivory)]">
+        <div className="mx-auto max-w-6xl px-6 md:px-10 pt-16 md:pt-20 pb-4">
+          <Reveal>
+            <figure className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-2xl">
+              <Image
+                src="/photos/hero-desk.jpg"
+                alt="Hands at a laptop keyboard, soft window light"
+                fill
+                priority
+                sizes="(min-width: 1024px) 1100px, 100vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)]/60 via-transparent to-transparent" />
+              <figcaption className="absolute bottom-6 md:bottom-8 left-6 md:left-10 text-[color:var(--color-ivory)] max-w-xl">
+                <p className="eyebrow" style={{ color: "var(--color-blush)" }}>
+                  A working day
+                </p>
+                <p className="font-display text-2xl md:text-3xl mt-2 italic">
+                  Slow code, written carefully.
+                </p>
+              </figcaption>
+            </figure>
+          </Reveal>
+        </div>
       </section>
 
       {/* Services snapshot */}

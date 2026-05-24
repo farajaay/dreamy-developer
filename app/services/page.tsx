@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { services } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
 
@@ -56,6 +57,24 @@ export default function ServicesPage() {
               </article>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* Editorial accent band */}
+      <section className="bg-[color:var(--color-ivory)]">
+        <div className="mx-auto max-w-6xl px-6 md:px-10 py-8 md:py-12">
+          <Reveal>
+            <figure className="relative aspect-[21/9] md:aspect-[24/7] overflow-hidden rounded-2xl">
+              <Image
+                src="/photos/services-texture.jpg"
+                alt="A long quiet hallway, late light"
+                fill
+                sizes="(min-width: 1024px) 1100px, 100vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-[color:var(--color-ink)]/30" />
+            </figure>
+          </Reveal>
         </div>
       </section>
 

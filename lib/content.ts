@@ -19,9 +19,98 @@ export const site = {
 export const nav = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/portfolio", label: "Work" },
   { href: "/about", label: "About" },
 ];
+
+/**
+ * Default tier data used as seed values for the database.
+ * Once seeded, the live `/pricing` page reads from the DB and Ahmad edits via /admin.
+ * Prices stored in SAR halalas (smallest unit) — like cents — so Stripe math is exact.
+ */
+export const pricingSeed = [
+  {
+    slug: "starter-brief",
+    name: "Starter Brief",
+    tagline: "For one clear problem, solved well.",
+    priceSarHalalas: 800000, // SAR 8,000.00
+    priceUsdCents: 213500, // ~USD 2,135.00
+    cadence: "one-time" as const,
+    features: [
+      "One focused tool — form, dashboard, integration, or small automation",
+      "Two-week build window",
+      "Source code yours, deployed to your host",
+      "One round of revisions",
+      "14-day post-launch support",
+    ],
+    sortOrder: 1,
+    active: true,
+  },
+  {
+    slug: "standard-build",
+    name: "Standard Build",
+    tagline: "A full product surface, end to end.",
+    priceSarHalalas: 2400000, // SAR 24,000.00
+    priceUsdCents: 640000, // ~USD 6,400.00
+    cadence: "one-time" as const,
+    features: [
+      "Multi-page web application or API + frontend",
+      "Database, authentication, role permissions",
+      "Four-to-six-week build window",
+      "Deployment, written documentation, live walkthrough",
+      "30-day post-launch support",
+    ],
+    sortOrder: 2,
+    active: true,
+    featured: true,
+  },
+  {
+    slug: "studio-engagement",
+    name: "Studio Engagement",
+    tagline: "A team of one, embedded with you.",
+    priceSarHalalas: 900000, // SAR 9,000.00 / month
+    priceUsdCents: 240000, // ~USD 2,400.00 / month
+    cadence: "monthly" as const,
+    features: [
+      "Ongoing development time — roughly ten working days per month",
+      "Weekly written progress",
+      "Discovery and planning included",
+      "Minimum three-month commitment",
+      "For products that need someone who stays",
+    ],
+    sortOrder: 3,
+    active: true,
+  },
+];
+
+export const pricing = {
+  eyebrow: "Pricing",
+  heading: "Three shapes of work,",
+  headingItalic: "priced honestly.",
+  intro:
+    "Most consultants quote in private. I'd rather you knew what to expect before you wrote the first message. The numbers below cover the most common shapes of engagement — beyond those, I'm happy to price a custom scope.",
+  notes: [
+    "Prices listed in Saudi Riyal; USD equivalents are approximate and shift with the exchange rate.",
+    "VAT is not included where applicable.",
+    "A deposit secures the start date; the remainder is invoiced at the agreed milestones.",
+  ],
+  faq: [
+    {
+      q: "What if my project doesn't fit one of these tiers?",
+      a: "It often won't. Send a message describing what you're trying to build — I'll quote a custom scope within forty-eight hours.",
+    },
+    {
+      q: "Why is the Standard Build the same price regardless of stack?",
+      a: "Because the work I do at that scope is largely the same — careful scoping, clean code, real documentation. The stack is chosen for the problem, not the bill.",
+    },
+    {
+      q: "Do you take equity instead of cash?",
+      a: "Rarely, and only with founders I already trust. Default is straightforward invoicing.",
+    },
+  ],
+  cta: { label: "Ask about a custom scope", href: "/contact" },
+};
 
 export const home = {
   eyebrow: "Developer · Operator · Builder",
