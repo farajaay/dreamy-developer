@@ -256,47 +256,47 @@ export const portfolio = {
 
 export const about = {
   eyebrow: "About",
-  heading: "I build for precision, not perfection.",
+  heading: "The long way from steel to software.",
   intro:
-    "Three sentences for the impatient. I spent a decade as an OT/ICS engineer, then three years running operations at a major steel producer, and I now write software full-time. I take fewer clients than most and stay with each one longer. I'm based in Jubail, on the eastern coast of Saudi Arabia.",
+    "I'm Ahmad. I write code from a small room in Jubail, on the eastern coast of Saudi Arabia, where the gulf wind carries the smell of iron and the call to prayer five times a day. For thirteen years I worked in the steel industry — first as an engineer in front of monitors, then as the operations manager who answered for nine plants. I came to software the long way around, through dust and deadlines and the steady weight of being responsible for other people's safety. That is the version of me you're hiring.",
   arc: [
     {
       period: "2009 – 2019",
       role: "OT / ICS Engineer",
       org: "HADEED — Saudi Iron & Steel (SABIC affiliate)",
-      body: "Industrial control systems across heavy plant operations. The decade that taught me what software actually feels like when production depends on it.",
+      body: "I joined the early years out of engineering school. My job, simplified, was to keep the control systems honest — the slow, careful translation between the physical world of molten steel and the digital one of dashboards and protocols. I spent a decade in PLC ladders and SCADA screens, in night shifts watching graphs that meant something, in the kind of debugging where a wrong answer doesn't just throw an error — it stops a production line worth millions or, worse, hurts someone. It is the most patient education I have ever received.",
     },
     {
       period: "2019 – 2022",
       role: "Operations Manager",
       org: "HADEED",
-      body: "Nine plants, eleven thousand people, an eighty-million-riyal budget, zero HSE incidents through the cycle. The years that taught me that clarity is the most undervalued engineering virtue.",
+      body: "In 2019 I moved upstairs. Nine plants under one signature; more than eleven thousand people across employees and contractors; an annual operating budget north of eighty million riyals. The first month was the loneliest of my career. The next thirty-six were the most useful. I learned the difference between leading and managing, between issuing a memo and quietly changing how people actually behaved. We finished the cycle with zero recordable HSE incidents — not because we got lucky, but because a hundred small habits across nine plants held without anyone watching. I left when I knew the place wouldn't collapse without me. That, I think, is the right way to leave.",
     },
     {
       period: "2022 – present",
       role: "Developer & Automation Consultant",
       org: "Independent",
-      body: "Building the software I wished I'd had on the other side of the table. Selective engagements, written work, and the occasional poem when nobody is looking.",
+      body: "Since 2022 I've written software full-time. The transition is less strange than people assume. I had always written code — small tools for my own engineers, scripts to drag data out of systems that did not want to give it up. The plant taught me what good software is supposed to feel like when production depends on it: invisible, reliable, never the thing standing between a person and the work in front of them. Most software I read fails that test. I write the kind that passes.",
     },
   ],
   philosophy: {
     quote: "I build for precision, not perfection.",
-    body: "Perfection is an excuse to ship late. Precision is naming what matters, building exactly that, and being honest about the rest.",
+    body: "Perfection is the word people use when they want permission to ship late. Precision is the harder thing — naming what matters, building exactly that, and being honest about everything you are choosing not to do. A line of code that solves the right problem is worth ten that solve the wrong one beautifully. I learned this on plant floors, where a near-correct answer can hurt people. It applies just as cleanly in software, even when the only thing at stake is somebody's afternoon.",
   },
   personal:
-    "Outside of work I am a father, an introvert, and an unreasonable lover of the arts — poetry, music, photography. I think slowly on purpose. I write more than I talk.",
+    "Off the clock I am a father, an introvert, and a quiet lover of the arts. I read poetry slowly — Arabic poets mostly, but Rilke and Heaney too. I take photographs that almost never make it onto the internet. I keep a small collection of fountain pens and use them to write in notebooks that nobody else will ever read. I think slowly on purpose. I argue with the world on paper before I argue with it out loud, and I find that most of the things I would have said angrily look smaller and more solvable by the time they reach a second draft. My wife reminds me, gently, that not everything has to be filed under 'precision.'",
   why: [
     {
       title: "Operational depth",
-      body: "I have lived with the cost of bad software on a plant floor. I bring that to every line I write.",
+      body: "I have lived with the cost of bad software on a plant floor. I have been the person responsible when a system failed at three in the morning. That memory sits with me every time I write a line of code. Software, for me, is not an academic problem — it is a thing that other humans will have to use at three in the morning.",
     },
     {
       title: "Technical execution",
-      body: "Full-stack, end-to-end. No handoffs to a team that doesn't exist yet.",
+      body: "Full-stack, end-to-end. Frontend, backend, infrastructure, deployment, documentation. No handoffs to a team that doesn't exist yet. No phrases like 'that's not my side of the stack.' If the bug is in front of you and the timezone is wrong, you are still the person on call.",
     },
     {
       title: "Direct communication",
-      body: "I'll tell you what I think, what it costs, and what I won't do. In writing.",
+      body: "I will tell you what I think, what I think it costs, and what I will not do — in writing, in plain language, before any money changes hands. If I do not believe in a feature, I will say so. If your scope is creeping, I will mark the day it started. I treat written words as load-bearing structures, because they are.",
     },
   ],
 };
