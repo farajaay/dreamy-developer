@@ -1,22 +1,69 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { asc } from "drizzle-orm";
 import { pricing, pricingSeed } from "@/lib/content";
 import { formatSar, formatUsd, formatCadence } from "@/lib/format";
 import { Reveal } from "@/components/Reveal";
+import { db, tiers as tiersTable, isDbConfigured } from "@/db";
+import { isStripeConfigured } from "@/lib/stripe";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description: pricing.intro,
 };
 
-// Until the database lands, the page renders from the seed.
-// After /admin/pricing is wired, swap this for a server fetch.
-async function getTiers() {
-  return pricingSeed;
+export const dynamic = "force-dynamic";
+
+type TierView = {
+  slug: string;
+  name: string;
+  tagline: string;
+  priceSarHalalas: number;
+  priceUsdCents: number;
+  cadence: "one-time" | "monthly";
+  features: string[];
+  featured: boolean;
+};
+
+async function getTiers(): Promise<TierView[]> {
+  if (isDbConfigured()) {
+    try {
+      const rows = await db
+        .select()
+        .from(tiersTable)
+        .orderBy(asc(tiersTable.sortOrder));
+      const active = rows.filter((t) => t.active);
+      if (active.length > 0) {
+        return active.map((t) => ({
+          slug: t.slug,
+          name: t.name,
+          tagline: t.tagline,
+          priceSarHalalas: t.priceSarHalalas,
+          priceUsdCents: t.priceUsdCents,
+          cadence: t.cadence === "monthly" ? "monthly" : "one-time",
+          features: t.features,
+          featured: t.featured,
+        }));
+      }
+    } catch {
+      // Fall through to seed.
+    }
+  }
+  return pricingSeed.map((t) => ({
+    slug: t.slug,
+    name: t.name,
+    tagline: t.tagline,
+    priceSarHalalas: t.priceSarHalalas,
+    priceUsdCents: t.priceUsdCents,
+    cadence: t.cadence,
+    features: t.features,
+    featured: "featured" in t ? Boolean(t.featured) : false,
+  }));
 }
 
 export default async function PricingPage() {
   const tiers = await getTiers();
+  const checkoutLive = isDbConfigured() && isStripeConfigured();
 
   return (
     <>
@@ -43,7 +90,7 @@ export default async function PricingPage() {
         <div className="mx-auto max-w-6xl px-6 md:px-10 py-20 md:py-28">
           <ul className="grid gap-8 md:grid-cols-3">
             {tiers.map((tier, i) => {
-              const featured = "featured" in tier && tier.featured;
+              const featured = tier.featured;
               return (
                 <Reveal
                   key={tier.slug}
@@ -112,32 +159,54 @@ export default async function PricingPage() {
                   >
                     {tier.features.map((feature) => (
                       <li key={feature} className="flex gap-3">
-                        <span
-                          aria-hidden
-                          className={
-                            featured
-                              ? "text-[color:var(--color-rose)]"
-                              : "text-[color:var(--color-rose)]"
-                          }
-                        >
-                          ·
-                        </span>
+                        <span aria-hidden className="text-[color:var(--color-rose)]">·</span>
                         <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <Link
-                    href={`/contact?tier=${tier.slug}`}
-                    className={`mt-10 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm tracking-wide transition-colors ${
-                      featured
-                        ? "bg-[color:var(--color-ivory)] text-[color:var(--color-ink)] hover:bg-[color:var(--color-blush)]"
-                        : "bg-[color:var(--color-ink)] text-[color:var(--color-ivory)] hover:bg-[color:var(--color-deep)]"
-                    }`}
-                  >
-                    Discuss this tier
-                    <span aria-hidden>→</span>
-                  </Link>
+                  <div className="mt-10 flex flex-col gap-3">
+                    {checkoutLive ? (
+                      <form action="/api/checkout" method="post">
+                        <input type="hidden" name="tierSlug" value={tier.slug} />
+                        <button
+                          type="submit"
+                          className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm tracking-wide transition-colors ${
+                            featured
+                              ? "bg-[color:var(--color-ivory)] text-[color:var(--color-ink)] hover:bg-[color:var(--color-blush)]"
+                              : "bg-[color:var(--color-ink)] text-[color:var(--color-ivory)] hover:bg-[color:var(--color-deep)]"
+                          }`}
+                        >
+                          {tier.cadence === "monthly" ? "Start engagement" : "Pay deposit"}
+                          <span aria-hidden>→</span>
+                        </button>
+                      </form>
+                    ) : (
+                      <Link
+                        href={`/contact?tier=${tier.slug}`}
+                        className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm tracking-wide transition-colors ${
+                          featured
+                            ? "bg-[color:var(--color-ivory)] text-[color:var(--color-ink)] hover:bg-[color:var(--color-blush)]"
+                            : "bg-[color:var(--color-ink)] text-[color:var(--color-ivory)] hover:bg-[color:var(--color-deep)]"
+                        }`}
+                      >
+                        Discuss this tier
+                        <span aria-hidden>→</span>
+                      </Link>
+                    )}
+                    {checkoutLive && (
+                      <Link
+                        href={`/contact?tier=${tier.slug}`}
+                        className={`text-center text-xs ${
+                          featured
+                            ? "text-[color:var(--color-blush)]/70 hover:text-[color:var(--color-blush)]"
+                            : "text-[color:var(--color-mauve)] hover:text-[color:var(--color-ink)]"
+                        }`}
+                      >
+                        Or, write to me first
+                      </Link>
+                    )}
+                  </div>
                 </Reveal>
               );
             })}
