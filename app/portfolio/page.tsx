@@ -26,80 +26,13 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Hero case study */}
-      <section className="bg-[color:var(--color-ink)] text-[color:var(--color-ivory)]">
-        <div className="mx-auto max-w-6xl px-6 md:px-10 py-24 md:py-32">
-          <Reveal>
-            <p className="eyebrow" style={{ color: "var(--color-blush)" }}>
-              Case study · 01
-            </p>
-            <h2 className="display-xl mt-6 max-w-4xl">
-              {portfolio.hero.title}
-            </h2>
-            <p className="mt-4 text-[color:var(--color-blush)]/80 text-sm tracking-wide">
-              {portfolio.hero.org} · {portfolio.hero.period}
-            </p>
-          </Reveal>
-
-          <div className="mt-16 grid gap-12 md:grid-cols-12">
-            <Reveal delay={0.1} className="md:col-span-5 space-y-8">
-              <div>
-                <p className="eyebrow" style={{ color: "var(--color-rose)" }}>
-                  The challenge
-                </p>
-                <p className="mt-4 leading-relaxed text-[color:var(--color-blush)]/90">
-                  {portfolio.hero.challenge}
-                </p>
-              </div>
-              <div>
-                <p className="eyebrow" style={{ color: "var(--color-rose)" }}>
-                  The work
-                </p>
-                <p className="mt-4 leading-relaxed text-[color:var(--color-blush)]/90">
-                  {portfolio.hero.solution}
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.2} className="md:col-span-7">
-              <ul className="grid grid-cols-2 gap-px bg-[color:var(--color-deep)] border border-[color:var(--color-deep)] rounded-2xl overflow-hidden">
-                {portfolio.hero.metrics.map((metric) => (
-                  <li
-                    key={metric.label}
-                    className="bg-[color:var(--color-ink)] p-8 md:p-10"
-                  >
-                    <p className="font-display text-5xl md:text-6xl text-[color:var(--color-rose)] leading-none">
-                      {metric.value}
-                    </p>
-                    <p className="mt-4 text-sm text-[color:var(--color-blush)]/80 leading-relaxed">
-                      {metric.label}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-
-              <ul className="mt-6 flex flex-wrap gap-2">
-                {portfolio.hero.stack.map((s) => (
-                  <li
-                    key={s}
-                    className="px-3 py-1.5 rounded-full border border-[color:var(--color-blush)]/30 text-xs text-[color:var(--color-blush)]"
-                  >
-                    {s}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Other projects */}
+      {/* Projects */}
       <section>
         <div className="mx-auto max-w-6xl px-6 md:px-10 py-24 md:py-32">
           <Reveal>
-            <p className="eyebrow">More work</p>
+            <p className="eyebrow">Current projects</p>
             <h2 className="display-lg mt-6 max-w-3xl text-[color:var(--color-ink)]">
-              Newer software projects,{" "}
+              Case studies,{" "}
               <em className="italic text-[color:var(--color-rose)]">written up as they ship.</em>
             </h2>
           </Reveal>

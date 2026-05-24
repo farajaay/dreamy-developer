@@ -117,7 +117,7 @@ export const home = {
   heading: "Software written like a quiet sentence —",
   headingItalic: "exact, and answerable.",
   intro:
-    "I'm Ahmad. For thirteen years I ran plants, budgets, and people at one of Saudi Arabia's largest steel operations. Now I write the software I always wished my teams had: clear, dependable, and built with the patience of someone who has lived with the consequences of bad tools.",
+    "I'm Ahmad. For thirteen years I worked as an engineer at one of Saudi Arabia's largest steel operations, building and maintaining the software that kept production honest. Now I write the software I always wished my teams had: clear, dependable, and built with the patience of someone who has lived with the consequences of bad tools.",
   cta: { label: "Start a project", href: "/contact" },
   ctaSecondary: { label: "See selected work", href: "/portfolio" },
   servicesEyebrow: "What I build",
@@ -163,7 +163,7 @@ export const services = {
     },
     {
       title: "Automation tooling",
-      body: "Years on the operations side taught me where the real friction lives. I find it, name it, and build something small that removes it.",
+      body: "Years inside a heavy-industry operation taught me where the real friction lives. I find it, name it, and build something small that removes it.",
       useCases: [
         "Internal CLI or admin tool for a repeated manual task",
         "Document and reporting pipelines",
@@ -212,23 +212,7 @@ export const portfolio = {
   eyebrow: "Selected work",
   heading: "A short shelf, kept honest.",
   intro:
-    "Some of this is operations work expressed through software; some is software written for operators. I've put the project I am proudest of first.",
-  hero: {
-    title: "HADEED operational turnaround",
-    org: "Saudi Iron & Steel (SABIC affiliate)",
-    period: "2019 – 2022",
-    challenge:
-      "Nine plants. More than eleven thousand personnel and contractors. An eighty-million-riyal operating budget. A safety record under scrutiny and morale that had been thinning for years.",
-    solution:
-      "I led the operations function through a structural reset — process discipline, clearer accountability lines, and instrumentation of the metrics that actually mattered. The team finished the cycle with zero recordable HSE incidents, the budget intact, and a culture people wanted to stay in.",
-    metrics: [
-      { value: "9", label: "plants under operational lead" },
-      { value: "11,000+", label: "personnel & contractors" },
-      { value: "SAR 80M+", label: "annual budget owned" },
-      { value: "0", label: "HSE incidents through cycle" },
-    ],
-    stack: ["Operations leadership", "Process design", "Safety systems", "Reporting & analytics"],
-  },
+    "I've kept this shelf short on purpose. Real case studies replace the placeholders below as projects ship. If you're considering working with me and want to see code, I'm happy to share private repositories under NDA — just ask.",
   projects: [
     {
       title: "Project case study — coming soon",
@@ -258,7 +242,7 @@ export const about = {
   eyebrow: "About",
   heading: "The long way from steel to software.",
   intro:
-    "I'm Ahmad. I write code from a small room in Jubail, on the eastern coast of Saudi Arabia, where the gulf wind carries the smell of iron and the call to prayer five times a day. For thirteen years I worked in the steel industry — first as an engineer in front of monitors, then as the operations manager who answered for nine plants. I came to software the long way around, through dust and deadlines and the steady weight of being responsible for other people's safety. That is the version of me you're hiring.",
+    "I'm Ahmad. I write code from a small room in Jubail, on the eastern coast of Saudi Arabia, where the gulf wind carries the smell of iron and the call to prayer five times a day. For thirteen years I worked in heavy industry as an engineer — first on the controls side, then as a senior engineer leading the harder integration problems — at one of the country's largest steel operations. I came to software the long way around, through dust and deadlines and the steady weight of being responsible for systems other people depended on. That is the version of me you're hiring.",
   arc: [
     {
       period: "2009 – 2019",
@@ -268,9 +252,9 @@ export const about = {
     },
     {
       period: "2019 – 2022",
-      role: "Operations Manager",
-      org: "HADEED",
-      body: "In 2019 I moved upstairs. Nine plants under one signature; more than eleven thousand people across employees and contractors; an annual operating budget north of eighty million riyals. The first month was the loneliest of my career. The next thirty-six were the most useful. I learned the difference between leading and managing, between issuing a memo and quietly changing how people actually behaved. We finished the cycle with zero recordable HSE incidents — not because we got lucky, but because a hundred small habits across nine plants held without anyone watching. I left when I knew the place wouldn't collapse without me. That, I think, is the right way to leave.",
+      role: "Senior Engineer / Technical Lead",
+      org: "HADEED — Saudi Iron & Steel (SABIC affiliate)",
+      body: "In 2019 the work changed shape. Fewer hours in front of the live screens, more time on the harder questions — how to redesign a brittle integration, how to teach a younger engineer to read a control loop, how to write the kind of documentation that survives the person who wrote it. I spent three years carrying responsibility for systems that other teams trusted by reflex. That trust is a quieter weight than headcount or budget. It taught me to build things that did not need me sitting next to them.",
     },
     {
       period: "2022 – present",
@@ -287,8 +271,8 @@ export const about = {
     "Off the clock I am a father, an introvert, and a quiet lover of the arts. I read poetry slowly — Arabic poets mostly, but Rilke and Heaney too. I take photographs that almost never make it onto the internet. I keep a small collection of fountain pens and use them to write in notebooks that nobody else will ever read. I think slowly on purpose. I argue with the world on paper before I argue with it out loud, and I find that most of the things I would have said angrily look smaller and more solvable by the time they reach a second draft. My wife reminds me, gently, that not everything has to be filed under 'precision.'",
   why: [
     {
-      title: "Operational depth",
-      body: "I have lived with the cost of bad software on a plant floor. I have been the person responsible when a system failed at three in the morning. That memory sits with me every time I write a line of code. Software, for me, is not an academic problem — it is a thing that other humans will have to use at three in the morning.",
+      title: "Industrial depth",
+      body: "I have lived with the cost of bad software on a plant floor. I have been the engineer responsible when a system failed at three in the morning. That memory sits with me every time I write a line of code. Software, for me, is not an academic problem — it is a thing that other humans will have to use at three in the morning.",
     },
     {
       title: "Technical execution",
