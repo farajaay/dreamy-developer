@@ -61,9 +61,28 @@ async function getTiers(): Promise<TierView[]> {
   }));
 }
 
+const SOFTWARE_SLUGS = new Set([
+  "starter-brief",
+  "standard-build",
+  "studio-engagement",
+]);
+
 export default async function PricingPage() {
   const tiers = await getTiers();
   const checkoutLive = isDbConfigured() && isStripeConfigured();
+
+  const groups = [
+    {
+      label: "Software & automation",
+      heading: "Built, end to end.",
+      tiers: tiers.filter((t) => SOFTWARE_SLUGS.has(t.slug)),
+    },
+    {
+      label: "Industrial & OT consulting",
+      heading: "Judgement, method, and a written answer.",
+      tiers: tiers.filter((t) => !SOFTWARE_SLUGS.has(t.slug)),
+    },
+  ].filter((g) => g.tiers.length > 0);
 
   return (
     <>
@@ -88,147 +107,31 @@ export default async function PricingPage() {
 
       {/* Tiers */}
       <section>
-        <div className="mx-auto max-w-6xl px-6 md:px-10 py-20 md:py-28">
-          <ul className="grid gap-8 md:grid-cols-3">
-            {tiers.map((tier, i) => {
-              const featured = tier.featured;
-              return (
-                <Reveal
-                  key={tier.slug}
-                  delay={0.08 * i}
-                  as="li"
-                  className={`flex flex-col rounded-2xl border p-8 md:p-10 ${
-                    featured
-                      ? "bg-[color:var(--color-accent-soft)] text-[color:var(--color-bg)] border-[color:var(--color-accent-soft)]"
-                      : "bg-[color:var(--color-bg-elevated)] text-[color:var(--color-fg)] border-[color:var(--color-rule)]"
-                  }`}
-                >
-                  <p
-                    className="eyebrow"
-                    style={{
-                      color: featured
-                        ? "var(--color-accent-deep)"
-                        : "var(--color-accent-soft)",
-                    }}
-                  >
-                    0{i + 1} {featured && "· Most chosen"}
-                  </p>
-
-                  <h2 className="font-display text-3xl md:text-4xl mt-5 leading-tight">
-                    {tier.name}
-                  </h2>
-                  <p
-                    className={`mt-3 italic font-display text-lg ${
-                      featured
-                        ? "text-[color:var(--color-accent-deep)]"
-                        : "text-[color:var(--color-accent)]"
-                    }`}
-                  >
-                    {tier.tagline}
-                  </p>
-
-                  <div className="mt-8 mb-6">
-                    <p className="font-display text-4xl md:text-5xl leading-none">
-                      {formatSar(tier.priceSarHalalas)}
-                      <span
-                        className={`text-base font-sans ${
-                          featured
-                            ? "text-[color:var(--color-bg)]/70"
-                            : "text-[color:var(--color-fg-muted)]"
-                        }`}
-                      >
-                        {" "}
-                        {formatCadence(tier.cadence)}
-                      </span>
-                    </p>
-                    <p
-                      className={`mt-2 text-sm ${
-                        featured
-                          ? "text-[color:var(--color-bg)]/60"
-                          : "text-[color:var(--color-fg-muted)]"
-                      }`}
-                    >
-                      ≈ {formatUsd(tier.priceUsdCents)}
-                      {tier.cadence === "monthly" ? " / month" : ""}
-                    </p>
-                  </div>
-
-                  <ul
-                    className={`space-y-3 text-sm leading-relaxed flex-1 ${
-                      featured
-                        ? "text-[color:var(--color-bg)]/85"
-                        : "text-[color:var(--color-fg-muted)]"
-                    }`}
-                  >
-                    {tier.features.map((feature) => (
-                      <li key={feature} className="flex gap-3">
-                        <span
-                          aria-hidden
-                          className={
-                            featured
-                              ? "text-[color:var(--color-accent-deep)]"
-                              : "text-[color:var(--color-accent)]"
-                          }
-                        >
-                          ·
-                        </span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-10 flex flex-col gap-3">
-                    {checkoutLive ? (
-                      <form action="/api/checkout" method="post">
-                        <input type="hidden" name="tierSlug" value={tier.slug} />
-                        <button
-                          type="submit"
-                          className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm tracking-wide transition-colors ${
-                            featured
-                              ? "bg-[color:var(--color-bg)] text-[color:var(--color-fg)] hover:bg-[color:var(--color-accent-deep)]"
-                              : "bg-[color:var(--color-fg)] text-[color:var(--color-bg)] hover:bg-[color:var(--color-accent-soft)]"
-                          }`}
-                        >
-                          {tier.cadence === "monthly"
-                            ? "Start engagement"
-                            : "Pay deposit"}
-                          <span aria-hidden>→</span>
-                        </button>
-                      </form>
-                    ) : (
-                      <Link
-                        href={`/contact?tier=${tier.slug}`}
-                        className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm tracking-wide transition-colors ${
-                          featured
-                            ? "bg-[color:var(--color-bg)] text-[color:var(--color-fg)] hover:bg-[color:var(--color-accent-deep)]"
-                            : "bg-[color:var(--color-fg)] text-[color:var(--color-bg)] hover:bg-[color:var(--color-accent-soft)]"
-                        }`}
-                      >
-                        Discuss this tier
-                        <span aria-hidden>→</span>
-                      </Link>
-                    )}
-                    {checkoutLive && (
-                      <Link
-                        href={`/contact?tier=${tier.slug}`}
-                        className={`text-center text-xs ${
-                          featured
-                            ? "text-[color:var(--color-bg)]/60 hover:text-[color:var(--color-bg)]"
-                            : "text-[color:var(--color-accent)] hover:text-[color:var(--color-fg)]"
-                        }`}
-                      >
-                        Or, write to me first
-                      </Link>
-                    )}
-                  </div>
-                </Reveal>
-              );
-            })}
-          </ul>
+        <div className="mx-auto max-w-6xl px-6 md:px-10 py-20 md:py-28 space-y-20 md:space-y-24">
+          {groups.map((group) => (
+            <div key={group.label}>
+              <Reveal>
+                <p className="eyebrow" style={{ color: "var(--color-accent-soft)" }}>
+                  {group.label}
+                </p>
+                <h2 className="display-lg mt-4 max-w-3xl">{group.heading}</h2>
+              </Reveal>
+              <ul className="mt-10 grid gap-8 md:grid-cols-3">
+                {group.tiers.map((tier, i) => (
+                  <TierCard
+                    key={tier.slug}
+                    tier={tier}
+                    index={i}
+                    checkoutLive={checkoutLive}
+                  />
+                ))}
+              </ul>
+            </div>
+          ))}
 
           {/* Notes */}
           <Reveal delay={0.2}>
-            <ul className="mt-16 max-w-2xl space-y-2 text-sm text-[color:var(--color-fg-muted)] border-l border-[color:var(--color-rule)] pl-5">
+            <ul className="max-w-2xl space-y-2 text-sm text-[color:var(--color-fg-muted)] border-l border-[color:var(--color-rule)] pl-5">
               {pricing.notes.map((n) => (
                 <li key={n}>{n}</li>
               ))}
@@ -285,5 +188,162 @@ export default async function PricingPage() {
         </div>
       </section>
     </>
+  );
+}
+
+function TierCard({
+  tier,
+  index,
+  checkoutLive,
+}: {
+  tier: TierView;
+  index: number;
+  checkoutLive: boolean;
+}) {
+  const featured = tier.featured;
+  const onRequest = tier.priceSarHalalas <= 0;
+  const ctaClass = `inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm tracking-wide transition-colors ${
+    featured
+      ? "bg-[color:var(--color-bg)] text-[color:var(--color-fg)] hover:bg-[color:var(--color-accent-deep)]"
+      : "bg-[color:var(--color-fg)] text-[color:var(--color-bg)] hover:bg-[color:var(--color-accent-soft)]"
+  }`;
+
+  return (
+    <Reveal
+      delay={0.08 * index}
+      as="li"
+      className={`flex flex-col rounded-2xl border p-8 md:p-10 ${
+        featured
+          ? "bg-[color:var(--color-accent-soft)] text-[color:var(--color-bg)] border-[color:var(--color-accent-soft)]"
+          : "bg-[color:var(--color-bg-elevated)] text-[color:var(--color-fg)] border-[color:var(--color-rule)]"
+      }`}
+    >
+      <p
+        className="eyebrow"
+        style={{
+          color: featured
+            ? "var(--color-accent-deep)"
+            : "var(--color-accent-soft)",
+        }}
+      >
+        0{index + 1} {featured && "· Most chosen"}
+      </p>
+
+      <h2 className="font-display text-3xl md:text-4xl mt-5 leading-tight">
+        {tier.name}
+      </h2>
+      <p
+        className={`mt-3 italic font-display text-lg ${
+          featured
+            ? "text-[color:var(--color-accent-deep)]"
+            : "text-[color:var(--color-accent)]"
+        }`}
+      >
+        {tier.tagline}
+      </p>
+
+      <div className="mt-8 mb-6">
+        {onRequest ? (
+          <>
+            <p className="font-display text-4xl md:text-5xl leading-none">
+              On request
+            </p>
+            <p
+              className={`mt-2 text-sm ${
+                featured
+                  ? "text-[color:var(--color-bg)]/60"
+                  : "text-[color:var(--color-fg-muted)]"
+              }`}
+            >
+              Priced to the scope of the event
+            </p>
+          </>
+        ) : (
+          <>
+            <p className="font-display text-4xl md:text-5xl leading-none">
+              {formatSar(tier.priceSarHalalas)}
+              <span
+                className={`text-base font-sans ${
+                  featured
+                    ? "text-[color:var(--color-bg)]/70"
+                    : "text-[color:var(--color-fg-muted)]"
+                }`}
+              >
+                {" "}
+                {formatCadence(tier.cadence)}
+              </span>
+            </p>
+            <p
+              className={`mt-2 text-sm ${
+                featured
+                  ? "text-[color:var(--color-bg)]/60"
+                  : "text-[color:var(--color-fg-muted)]"
+              }`}
+            >
+              ≈ {formatUsd(tier.priceUsdCents)}
+              {tier.cadence === "monthly" ? " / month" : ""}
+            </p>
+          </>
+        )}
+      </div>
+
+      <ul
+        className={`space-y-3 text-sm leading-relaxed flex-1 ${
+          featured
+            ? "text-[color:var(--color-bg)]/85"
+            : "text-[color:var(--color-fg-muted)]"
+        }`}
+      >
+        {tier.features.map((feature) => (
+          <li key={feature} className="flex gap-3">
+            <span
+              aria-hidden
+              className={
+                featured
+                  ? "text-[color:var(--color-accent-deep)]"
+                  : "text-[color:var(--color-accent)]"
+              }
+            >
+              ·
+            </span>
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-10 flex flex-col gap-3">
+        {onRequest ? (
+          <Link href={`/contact?tier=${tier.slug}`} className={`w-full ${ctaClass}`}>
+            Discuss scope
+            <span aria-hidden>→</span>
+          </Link>
+        ) : checkoutLive ? (
+          <form action="/api/checkout" method="post">
+            <input type="hidden" name="tierSlug" value={tier.slug} />
+            <button type="submit" className={`w-full ${ctaClass}`}>
+              {tier.cadence === "monthly" ? "Start engagement" : "Pay deposit"}
+              <span aria-hidden>→</span>
+            </button>
+          </form>
+        ) : (
+          <Link href={`/contact?tier=${tier.slug}`} className={`w-full ${ctaClass}`}>
+            Discuss this tier
+            <span aria-hidden>→</span>
+          </Link>
+        )}
+        {checkoutLive && !onRequest && (
+          <Link
+            href={`/contact?tier=${tier.slug}`}
+            className={`text-center text-xs ${
+              featured
+                ? "text-[color:var(--color-bg)]/60 hover:text-[color:var(--color-bg)]"
+                : "text-[color:var(--color-accent)] hover:text-[color:var(--color-fg)]"
+            }`}
+          >
+            Or, write to me first
+          </Link>
+        )}
+      </div>
+    </Reveal>
   );
 }

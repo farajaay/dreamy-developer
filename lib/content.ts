@@ -88,8 +88,8 @@ export const pricingSeed = [
     slug: "diagnostic-day",
     name: "Diagnostic Day",
     tagline: "One focused day on the problem in front of you.",
-    priceSarHalalas: 600000, // SAR 6,000.00
-    priceUsdCents: 160000, // ~USD 1,600.00
+    priceSarHalalas: 900000, // SAR 9,000.00
+    priceUsdCents: 240000, // ~USD 2,400.00
     cadence: "one-time" as const,
     features: [
       "A single on-site or remote day — troubleshooting, an investigation, or a design-review spot-check",
@@ -99,6 +99,40 @@ export const pricingSeed = [
       "The honest entry point when you're not sure how deep this goes",
     ],
     sortOrder: 4,
+    active: true,
+  },
+  {
+    slug: "workshop-day",
+    name: "Workshop Day",
+    tagline: "Training built from real failures, not slideware.",
+    priceSarHalalas: 750000, // SAR 7,500.00
+    priceUsdCents: 200000, // ~USD 2,000.00
+    cadence: "one-time" as const,
+    features: [
+      "A delivered training day — half- to full-day — on a topic from your team's real gaps",
+      "Includes a scoping call, tailored materials, and hands-on exercises",
+      "Topics: OT/ICS fundamentals & security, maintenance & reliability, RCA, turnaround discipline",
+      "On-site or remote; assessment and sign-off where useful",
+      "Per-cohort pricing for larger groups, priced to scope",
+    ],
+    sortOrder: 5,
+    active: true,
+  },
+  {
+    slug: "investigation-design-review",
+    name: "Investigation & Design Review",
+    tagline: "A bounded, documented answer to one hard question.",
+    priceSarHalalas: 1500000, // SAR 15,000.00
+    priceUsdCents: 400000, // ~USD 4,000.00
+    cadence: "one-time" as const,
+    features: [
+      "A fixed-scope root-cause investigation or an independent design review",
+      "Structured method — problem statement, evidence, and causal analysis, or a checklist-based review",
+      "Written report with findings, risks rated, and corrective / preventive actions",
+      "Ideal after a recurring failure or incident, or before you build or commission",
+      "Larger or multi-system scopes priced individually",
+    ],
+    sortOrder: 6,
     active: true,
   },
   {
@@ -115,25 +149,42 @@ export const pricingSeed = [
       "Executive readout plus a working session with your engineering team",
       "Two-to-four-week engagement, scope agreed up front",
     ],
-    sortOrder: 5,
+    sortOrder: 7,
     active: true,
     featured: true,
+  },
+  {
+    slug: "fractional-ot-engineer",
+    name: "Fractional OT / Reliability Engineer",
+    tagline: "Experience on tap, without a full hire.",
+    priceSarHalalas: 1200000, // SAR 12,000.00 / month
+    priceUsdCents: 320000, // ~USD 3,200.00 / month
+    cadence: "monthly" as const,
+    features: [
+      "A lighter monthly retainer — a few days a month of ongoing OT and reliability advisory",
+      "A senior engineer on call for design decisions, troubleshooting, and reviews",
+      "Monthly written status and a running action log",
+      "Minimum two-month commitment; step up to the turnaround retainer for events",
+      "For teams that need experience on tap, not a full headcount",
+    ],
+    sortOrder: 8,
+    active: true,
   },
   {
     slug: "turnaround-advisory-retainer",
     name: "Turnaround & Advisory Retainer",
     tagline: "An experienced hand through planning, execution, and after.",
-    priceSarHalalas: 2200000, // SAR 22,000.00 / month
-    priceUsdCents: 586500, // ~USD 5,865.00 / month
+    priceSarHalalas: 0, // On request — scoped to the size of the event
+    priceUsdCents: 0,
     cadence: "monthly" as const,
     features: [
       "Embedded advisory for turnaround planning and execution, or ongoing reliability improvement",
       "Scope challenge, work-list discipline, critical-path review, and daily execution controls",
       "Training and mentoring for your engineers and planners as we go",
       "Weekly written status and a documented close-out",
-      "Minimum two-month commitment; scales with the size of the event",
+      "Priced to the size and duration of the event — let's talk",
     ],
-    sortOrder: 6,
+    sortOrder: 9,
     active: true,
   },
 ];
@@ -143,9 +194,9 @@ export const pricing = {
   heading: "Two practices,",
   headingItalic: "priced honestly.",
   intro:
-    "Most consultants quote in private. I'd rather you knew what to expect before you wrote the first message. The first three tiers cover software builds; the last three cover industrial and OT consulting — assessment, advisory, and turnaround support. Beyond these, I'm happy to price a custom scope.",
+    "Most consultants quote in private. I'd rather you knew what to expect before you wrote the first message. The first group covers software builds; the second covers industrial and OT consulting — from a single day to a full assessment, with ongoing retainers and larger turnaround work priced to scope. Beyond these, I'm happy to price a custom engagement.",
   notes: [
-    "The first three tiers are software builds; the last three are consulting engagements.",
+    "Software builds are fixed-scope. Consulting spans single days, fixed-scope packages, and monthly retainers; larger turnaround work is priced on request.",
     "Prices listed in Saudi Riyal; USD equivalents are approximate and shift with the exchange rate.",
     "VAT (15%) is not included and is added where applicable.",
     "For software, a deposit secures the start date and the remainder is invoiced at agreed milestones. Consulting is invoiced per engagement or monthly for retainers; travel and accommodation outside the Eastern Province are billed at cost.",

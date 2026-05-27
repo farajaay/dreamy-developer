@@ -21,7 +21,7 @@
 - Admin: single-password login, HMAC-signed cookie, 7-day session
 - Two equal practices: software/automation (`/services`) and industrial & OT consulting (`/consulting`); home + nav surface both. Nav label "Services" → "Software".
 - Consulting offers: training, consulting, troubleshooting, investigation, design reviews — across OT environment, operational readiness, maintenance practices, turnaround planning & execution.
-- Pricing: 3 software tiers + 3 consulting tiers (Diagnostic Day, Readiness Assessment, Turnaround & Advisory Retainer) in one DB-backed grid, sortOrder 1–6.
+- Pricing: DB-backed grid grouped on `/pricing` into Software (3 tiers, sortOrder 1–3) and Consulting (6 tiers, sortOrder 4–9: Diagnostic Day, Workshop Day, Investigation & Design Review, Readiness Assessment, Fractional OT/Reliability Engineer, Turnaround & Advisory Retainer). Grouping is by slug set (`SOFTWARE_SLUGS` in `app/pricing/page.tsx`). A tier with `priceSarHalalas <= 0` renders "On request" + a "Discuss scope" link and is blocked from Stripe checkout.
 
 ## Aesthetic Variables
 - **Palette:** Navy `#0F172A / #1E293B / #334155` · Ivory `#F7F1ED` · Blush `#E9D5D1` · Rose `#D18C8C` · Mauve `#8B5E5E`
