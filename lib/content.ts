@@ -176,7 +176,7 @@ export const home = {
   heading: "Two practices, written like a quiet sentence —",
   headingItalic: "exact, and answerable.",
   intro:
-    "I'm Ahmad. For thirteen years I worked as an engineer at one of Saudi Arabia's largest steel operations — first on the control systems that kept production honest, then leading the harder integration problems. Today I work in two directions from that same foundation: I build software for operators, and I consult on the OT, readiness, maintenance, and turnaround practices I spent a career inside.",
+    "I'm Ahmad. For seventeen years I've worked as an engineer — first on the control systems that kept production honest at one of Saudi Arabia's largest steel operations, then leading the harder integration problems. Today I work in two directions from that same foundation: I build software for operators, and I consult on the OT, readiness, maintenance, and turnaround practices I spent a career inside.",
   cta: { label: "Start a project", href: "/contact" },
   ctaSecondary: { label: "See selected work", href: "/portfolio" },
   practicesEyebrow: "Two practices, one standard",
@@ -281,7 +281,7 @@ export const services = {
 
 export const consulting = {
   eyebrow: "Industrial & OT consulting",
-  heading: "Thirteen years on the plant floor,",
+  heading: "Seventeen years on the plant floor,",
   headingItalic: "now at your disposal.",
   intro:
     "I spent a career responsible for control systems where a wrong answer doesn't throw an error — it stops a production line or hurts someone. That is the lens I bring to IT and manufacturing teams that need an experienced hand: training, advisory, troubleshooting, investigation, and design reviews across OT environments, operational readiness, maintenance practices, and turnaround planning and execution.",
@@ -452,7 +452,7 @@ export const about = {
   eyebrow: "About",
   heading: "The long way from steel to software.",
   intro:
-    "I'm Ahmad. I write code from a small room in Jubail, on the eastern coast of Saudi Arabia, where the gulf wind carries the smell of iron and the call to prayer five times a day. For thirteen years I worked in heavy industry as an engineer — first on the controls side, then as a senior engineer leading the harder integration problems — at one of the country's largest steel operations. I came to software the long way around, through dust and deadlines and the steady weight of being responsible for systems other people depended on. That is the version of me you're hiring.",
+    "I'm Ahmad. I write code from a small room in Jubail, on the eastern coast of Saudi Arabia, where the gulf wind carries the smell of iron and the call to prayer five times a day. For seventeen years I've worked as an engineer — first on the controls side, then as a senior engineer leading the harder integration problems at one of the country's largest steel operations, and for the last few years independently. I came to software the long way around, through dust and deadlines and the steady weight of being responsible for systems other people depended on. That is the version of me you're hiring.",
   arc: [
     {
       period: "2009 – 2019",

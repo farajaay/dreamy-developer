@@ -34,9 +34,9 @@ export default function AboutPage() {
           <Reveal>
             <p className="eyebrow">The arc</p>
             <h2 className="display-lg mt-6 max-w-3xl">
-              Thirteen years in heavy industry,{" "}
+              Seventeen years in engineering,{" "}
               <em className="italic text-[color:var(--color-accent)]">
-                three at the keyboard.
+                from the plant floor to the keyboard.
               </em>
             </h2>
           </Reveal>
