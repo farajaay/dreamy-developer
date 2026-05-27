@@ -41,6 +41,13 @@ export async function POST(req: Request): Promise<Response> {
     return NextResponse.json({ error: "That tier isn't available." }, { status: 404 });
   }
 
+  if (tier.priceSarHalalas <= 0) {
+    return NextResponse.json(
+      { error: "This engagement is priced on request. Please write to me." },
+      { status: 400 },
+    );
+  }
+
   const stripe = getStripe();
   const origin =
     process.env.NEXT_PUBLIC_SITE_URL ??
