@@ -21,7 +21,7 @@ export function Header() {
           AlFaraj
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-5 lg:gap-7">
           {nav.map((item) => {
             const active =
               item.href === "/"

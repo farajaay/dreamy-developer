@@ -76,7 +76,7 @@ export default function HomePage() {
                       Working hours
                     </p>
                     <p className="font-display text-2xl md:text-3xl mt-2 italic leading-tight">
-                      Slow code, written carefully.
+                      Slow work, done properly.
                     </p>
                   </figcaption>
                 </figure>
@@ -102,37 +102,55 @@ export default function HomePage() {
         <div className="rule" />
       </section>
 
-      {/* Services snapshot */}
+      {/* Two practices */}
       <section className="relative">
         <div className="mx-auto max-w-6xl px-6 md:px-10 py-24 md:py-32">
-          <div className="grid gap-12 md:grid-cols-12 md:gap-10">
-            <Reveal className="md:col-span-4">
-              <p className="eyebrow">{home.servicesEyebrow}</p>
-              <h2 className="display-lg mt-6">
-                Three lines of work,{" "}
-                <em className="italic text-[color:var(--color-accent)]">
-                  one standard.
-                </em>
-              </h2>
-            </Reveal>
+          <Reveal>
+            <p className="eyebrow">{home.practicesEyebrow}</p>
+            <h2 className="display-lg mt-6 max-w-3xl">
+              Two lines of work,{" "}
+              <em className="italic text-[color:var(--color-accent)]">
+                one standard.
+              </em>
+            </h2>
+          </Reveal>
 
-            <ul className="md:col-span-8 grid gap-px bg-[color:var(--color-rule)] border border-[color:var(--color-rule)] rounded-2xl overflow-hidden">
-              {home.services.map((service, i) => (
-                <Reveal
-                  as="li"
-                  key={service.title}
-                  delay={0.08 * i}
-                  className="bg-[color:var(--color-bg-elevated)] p-8 md:p-10"
+          <div className="mt-12 grid gap-8 md:grid-cols-2">
+            {home.practices.map((practice, i) => (
+              <Reveal
+                as="article"
+                key={practice.title}
+                delay={0.1 * i}
+                className="flex flex-col rounded-2xl border border-[color:var(--color-rule)] bg-[color:var(--color-bg-elevated)] p-8 md:p-10"
+              >
+                <p
+                  className="eyebrow"
+                  style={{ color: "var(--color-accent-soft)" }}
                 >
-                  <p className="font-display text-2xl text-[color:var(--color-fg)]">
-                    {service.title}
-                  </p>
-                  <p className="mt-3 text-[color:var(--color-fg-muted)] leading-relaxed">
-                    {service.body}
-                  </p>
-                </Reveal>
-              ))}
-            </ul>
+                  {practice.eyebrow}
+                </p>
+                <h3 className="font-display text-3xl mt-5 text-[color:var(--color-fg)]">
+                  {practice.title}
+                </h3>
+                <p className="mt-4 text-[color:var(--color-fg-muted)] leading-relaxed">
+                  {practice.body}
+                </p>
+                <ul className="mt-6 space-y-3 border-l border-[color:var(--color-rule)] pl-5 text-sm text-[color:var(--color-fg)] flex-1">
+                  {practice.points.map((point) => (
+                    <li key={point} className="leading-relaxed">
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={practice.href}
+                  className="mt-8 inline-flex items-center gap-2 text-sm tracking-wide text-[color:var(--color-accent)] hover:text-[color:var(--color-fg)] transition-colors"
+                >
+                  {practice.linkLabel}
+                  <span aria-hidden>→</span>
+                </Link>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

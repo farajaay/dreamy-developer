@@ -9,6 +9,7 @@
 - [x] Phase 4: Polish (SEO + scroll animation)
 - [x] Phase 5: Pricing page + editorial imagery
 - [x] Phase 6: Supabase DB + admin panel + Stripe checkout
+- [x] Phase 7: Industrial & OT consulting practice (second arm) + consulting toolkit docs
 - [ ] Awaiting env vars: Resend, Supabase, Stripe, Admin
 
 ## Decisions Made
@@ -18,6 +19,9 @@
 - All site copy lives in `lib/content.ts`
 - DB: Supabase Postgres via Drizzle ORM; prices stored as integer minor units (halalas / cents)
 - Admin: single-password login, HMAC-signed cookie, 7-day session
+- Two equal practices: software/automation (`/services`) and industrial & OT consulting (`/consulting`); home + nav surface both. Nav label "Services" → "Software".
+- Consulting offers: training, consulting, troubleshooting, investigation, design reviews — across OT environment, operational readiness, maintenance practices, turnaround planning & execution.
+- Pricing: 3 software tiers + 3 consulting tiers (Diagnostic Day, Readiness Assessment, Turnaround & Advisory Retainer) in one DB-backed grid, sortOrder 1–6.
 
 ## Aesthetic Variables
 - **Palette:** Navy `#0F172A / #1E293B / #334155` · Ivory `#F7F1ED` · Blush `#E9D5D1` · Rose `#D18C8C` · Mauve `#8B5E5E`
@@ -27,7 +31,8 @@
 ## File map
 - `app/layout.tsx` — root layout, fonts, metadata, Analytics
 - `app/globals.css` — Tailwind v4 `@theme` (palette + type scale)
-- `app/page.tsx` `/services` `/portfolio` `/about` `/contact` — public pages
+- `app/page.tsx` `/services` `/consulting` `/portfolio` `/about` `/contact` — public pages
+- `app/consulting/page.tsx` — industrial & OT consulting practice page (reads `consulting` from `lib/content.ts`)
 - `app/pricing/page.tsx` — live tiers (reads DB, falls back to seed)
 - `app/pricing/success/page.tsx` — post-checkout thank-you
 - `app/admin/login/page.tsx` — admin sign-in (outside protected layout)
@@ -45,6 +50,8 @@
 - `lib/stripe.ts` — Stripe client singleton
 - `drizzle.config.ts` — Drizzle Kit config
 - `public/photos/` — placeholder photos; README explains how to swap them
+- `consulting/` — ready-to-use consulting toolkit (intake, OT/readiness/maintenance checklists, RCA, design review, turnaround, training, proposal, findings report). See `consulting/README.md`.
+- `legal/` — engagement contracts (MSA, SOW, NDA, retainer); pair with `consulting/` for client work
 
 ---
 
