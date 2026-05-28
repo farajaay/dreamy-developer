@@ -73,7 +73,7 @@ export default function ServicesPage() {
                 sizes="(min-width: 1024px) 1100px, 100vw"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-[color:var(--color-bg)]/60" />
+              <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--color-bg)]/40 via-transparent to-[color:var(--color-bg)]/60" />
             </figure>
           </Reveal>
         </div>
@@ -134,7 +134,7 @@ export default function ServicesPage() {
               {services.stack.map((tech) => (
                 <li
                   key={tech}
-                  className="px-4 py-2 rounded-full border border-[color:var(--color-rule)] text-sm text-[color:var(--color-fg)]"
+                  className="px-4 py-2 rounded-full border border-[color:var(--color-rule-strong)] text-sm text-[color:var(--color-fg)] hover:border-[color:var(--color-accent)] transition-colors"
                 >
                   {tech}
                 </li>
