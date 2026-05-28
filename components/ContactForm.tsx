@@ -97,7 +97,7 @@ export function ContactForm() {
   }
 
   const fieldBase =
-    "w-full bg-transparent border-b border-[color:var(--color-rule)] py-3 px-0 text-[color:var(--color-fg)] focus:outline-none focus:border-[color:var(--color-accent)] transition-colors placeholder:text-[color:var(--color-fg-dim)]";
+    "w-full bg-transparent border-b border-[color:var(--color-rule-strong)] py-3 px-0 text-[color:var(--color-fg)] focus:outline-none focus:border-[color:var(--color-accent)] hover:border-[color:var(--color-fg-muted)] transition-colors placeholder:text-[color:var(--color-fg-dim)]";
 
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-10">
@@ -112,6 +112,7 @@ export function ContactForm() {
               onChange={(e) => setName(e.target.value)}
               required
               autoComplete="name"
+              placeholder="Your full name"
               className={fieldBase}
             />
           }
@@ -126,6 +127,7 @@ export function ContactForm() {
               onChange={(e) => setEmail(e.target.value)}
               required
               autoComplete="email"
+              placeholder="you@example.com"
               className={fieldBase}
             />
           }
@@ -136,29 +138,49 @@ export function ContactForm() {
         <Field
           label="Project type"
           input={
-            <select
-              value={projectType}
-              onChange={(e) => setProjectType(e.target.value)}
-              className={`${fieldBase} appearance-none cursor-pointer`}
-            >
-              {contact.projectTypes.map((t) => (
-                <option key={t}>{t}</option>
-              ))}
-            </select>
+            <div className="relative">
+              <select
+                value={projectType}
+                onChange={(e) => setProjectType(e.target.value)}
+                className={`${fieldBase} appearance-none cursor-pointer pr-8`}
+              >
+                {contact.projectTypes.map((t) => (
+                  <option key={t} className="bg-[color:var(--color-bg-elevated)] text-[color:var(--color-fg)]">
+                    {t}
+                  </option>
+                ))}
+              </select>
+              <span
+                aria-hidden
+                className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-[color:var(--color-fg-muted)]"
+              >
+                ▾
+              </span>
+            </div>
           }
         />
         <Field
           label="Scope"
           input={
-            <select
-              value={scope}
-              onChange={(e) => setScope(e.target.value)}
-              className={`${fieldBase} appearance-none cursor-pointer`}
-            >
-              {contact.scopes.map((s) => (
-                <option key={s}>{s}</option>
-              ))}
-            </select>
+            <div className="relative">
+              <select
+                value={scope}
+                onChange={(e) => setScope(e.target.value)}
+                className={`${fieldBase} appearance-none cursor-pointer pr-8`}
+              >
+                {contact.scopes.map((s) => (
+                  <option key={s} className="bg-[color:var(--color-bg-elevated)] text-[color:var(--color-fg)]">
+                    {s}
+                  </option>
+                ))}
+              </select>
+              <span
+                aria-hidden
+                className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-[color:var(--color-fg-muted)]"
+              >
+                ▾
+              </span>
+            </div>
           }
         />
       </div>
